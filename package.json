@@ -1,13 +1,16 @@
 {
   "name": "imagemagick2",
-  "version": "1.0.0",
-  "description": "",
+  "keywords": ["ImageMagick", "imagemagick", "image processing", "resize", "histogram", "grayscale", "MagickWand"],
+  "homepage": "https://github.com/TesserisPro/imagmagick2", 
+  "version": "0.1.0",
+  "description": "ImageMagick module for NodeJS that is built with MagickWand API.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "node-gyp rebuild"
   },
   "author": "Dmitry Peleshenko",
+  "email": "peleshenko@tesseris.com",
   "license": "ISC",
   "gypfile": true,
   "devDependencies": {

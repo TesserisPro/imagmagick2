@@ -39,7 +39,7 @@ function Wand(fileName, loadedProgress) {
         });
     }
 
-    self.then = function(progress) {
+    self.continue = function(progress) {
         if(progress) progress(this);
         return _branch();
     }
