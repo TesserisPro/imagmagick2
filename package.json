@@ -2,7 +2,7 @@
   "name": "imagemagick2",
   "keywords": ["ImageMagick", "imagemagick", "image processing", "resize", "histogram", "grayscale", "MagickWand"],
   "homepage": "https://github.com/TesserisPro/imagmagick2", 
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ImageMagick module for NodeJS that is built with MagickWand API.",
   "main": "index.js",
   "scripts": {
