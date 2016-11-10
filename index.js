@@ -29,9 +29,9 @@ function Wand(fileName, loadedProgress) {
             
             magic.load(self.file, function(error, wand) {
                 if(error)
-                    throw new Error(error);
+                    reject(error);
                 if(!wand)
-                    throw new Error("Critical error during image loading. Possible memory leak.");
+                    reject("Critical error during image loading. Possible memory leak.");
                 self.wand = wand;
                 if(loadedProgress) loadedProgress(self);
                 processActions();
@@ -39,7 +39,7 @@ function Wand(fileName, loadedProgress) {
         });
     }
 
-    self.continue = function(progress) {
+    self.do = function(progress) {
         if(progress) progress(this);
         return _branch();
     }
@@ -109,7 +109,26 @@ function Wand(fileName, loadedProgress) {
         return _branch();    
     }
 
-     self.grayscale = function(progress) {
+    self.rotate = function(angle, progress) {
+        _append(function(callback){
+            if (typeof angle != "number") {
+               if(progress) progress(this);
+               callback();
+               return;
+            }
+
+            var self = this;
+            magic.rotate(this.wand, angle, function(error){
+                if(error) _fail.apply(self, [error]);
+                if(progress) progress(self);
+                callback();
+            });
+        });
+
+        return _branch();    
+    }
+
+    self.grayscale = function(progress) {
         _append(function(callback){
             var self = this;
             magic.grayscale(this.wand, function(error){
@@ -134,6 +153,7 @@ function Wand(fileName, loadedProgress) {
         
         return _branch();
     }
+    
 
     var _branch = function() {
         if(self.wand)
@@ -152,7 +172,7 @@ function Wand(fileName, loadedProgress) {
     }
 
     var _ok = function(){
-        this.break();
+        //this.break();
         magic.close(this.wand);
         this.wand = null;
         this.resolve(this);

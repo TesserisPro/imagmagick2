@@ -14,6 +14,8 @@ NAN_METHOD(close);
 
 NAN_METHOD(resize);
 
+NAN_METHOD(rotate);
+
 NAN_METHOD(write);
 
 NAN_METHOD(strip);
@@ -22,6 +24,7 @@ NAN_METHOD(size);
 NAN_METHOD(brightnessHistogram);
 
 NAN_METHOD(grayscale);
+
 
 
 NAN_MODULE_INIT(init) {
@@ -34,6 +37,8 @@ NAN_MODULE_INIT(init) {
     NAN_EXPORT(target, close);
 
     NAN_EXPORT(target, resize);
+
+    NAN_EXPORT(target, rotate);
 
     NAN_EXPORT(target, write);
     
