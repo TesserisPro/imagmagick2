@@ -48,7 +48,7 @@ function Wand(fileName, loadedProgress) {
         this.actions.length = 0;
     }
 
-    self.strip = function(progerss){
+    self.strip = function(progress){
         _append(function(callback){
             var self = this;
             magic.strip(this.wand, function(error){
